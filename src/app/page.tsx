@@ -1,5 +1,5 @@
+import Info from '@/components/info';
 import fetchContentFromCMS from '@/services/cms';
-import Info from '@/widgets/info';
 import InputBlock from '@/widgets/input-block';
 
 export default async function Home() {

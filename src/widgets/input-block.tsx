@@ -1,10 +1,11 @@
 'use client';
-import CustomButton from '@/components/custom-button';
-import TextAreaButton from '@/components/textarea-button';
 import { SAMPLE_TEXT } from '@/data/sample-text';
 import { TextareaAutosize } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { paraphraseText } from '@/services/paraphrase';
+import TextAreaButton from '@/components/textarea/textarea-button';
+import TextAreaControls from '@/components/textarea/textarea-controls';
+import ErrorString from '@/components/error-string';
 
 export default function InputBlock() {
   const [inputValue, setInputValue] = useState('');
@@ -64,8 +65,7 @@ export default function InputBlock() {
             maxHeight: '400px',
             transition: 'all 0.3s ease',
           }}
-        ></TextareaAutosize>
-
+        />
         {!inputValue && (
           <div className="absolute flex gap-2 mt-[102px] top-[10px] left-1/2 translate-x-[-50%]">
             <TextAreaButton
@@ -80,34 +80,15 @@ export default function InputBlock() {
             />
           </div>
         )}
-        <div
-          className={
-            'p-2 bg-white transition-all duration-300 absolute bottom-0 flex justify-end w-full gap-2  border-t ' +
-            (inputValue ? 'border-[#DBDCDF] ' : 'border-transparent') +
-            (success ? 'translate-y-[100%] ' : '')
-          }
-        >
-          {inputValue && !loading && (
-            <CustomButton
-              handleClick={handleClearInput}
-              iconName="cross"
-              type="secondary"
-              text="Clear input"
-            />
-          )}
-          <CustomButton
-            disabled={loading}
-            handleClick={handleParaphrase}
-            type="primary"
-            text={loading ? 'Paraphrasing' : 'Paraphrase'}
-          />
-        </div>
+        <TextAreaControls
+          handleClearInput={handleClearInput}
+          handleParaphrase={handleParaphrase}
+          success={success}
+          inputValue={inputValue}
+          loading={loading}
+        />
       </div>
-      <div className="mt-2 min-h-4">
-        {error && (
-          <p className=" font-medium text-xs text-[#FF3B30]">{error}</p>
-        )}
-      </div>
+      <ErrorString error={error}/>
     </>
   );
 }
