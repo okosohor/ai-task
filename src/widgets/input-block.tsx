@@ -1,11 +1,10 @@
 'use client';
 import { SAMPLE_TEXT } from '@/data/sample-text';
-import { TextareaAutosize } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { paraphraseText } from '@/services/paraphrase';
-import TextAreaButton from '@/components/textarea/textarea-button';
 import TextAreaControls from '@/components/textarea/textarea-controls';
-import ErrorString from '@/components/error-string';
+import TextAreaBlock from '@/components/textarea/textarea-block';
+import ErrorString from '@/components/shared/error-string';
 
 export default function InputBlock() {
   const [inputValue, setInputValue] = useState('');
@@ -50,36 +49,13 @@ export default function InputBlock() {
   return (
     <>
       <div className="flex flex-col relative overflow-hidden border border-[#DBDCDF] rounded-[28px]">
-        <TextareaAutosize
-          disabled={loading}
-          aria-label="minimum height"
-          minRows={3}
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Enter text here or upload file to humanize it."
-          style={{
-            width: '100%',
-            padding: '16px 16px 66px 16px',
-            backgroundColor: inputValue ? '#FFF' : '#EEF0F5',
-            minHeight: '400px',
-            maxHeight: '400px',
-            transition: 'all 0.3s ease',
-          }}
+        <TextAreaBlock
+          loading={loading}
+          handleInputChange={handleInputChange}
+          handlePasteText={handlePasteText}
+          handleSampleText={handleSampleText}
+          inputValue={inputValue}
         />
-        {!inputValue && (
-          <div className="absolute flex gap-2 mt-[102px] top-[10px] left-1/2 translate-x-[-50%]">
-            <TextAreaButton
-              handleClick={handlePasteText}
-              iconName="paste"
-              text="Paste text"
-            />
-            <TextAreaButton
-              handleClick={handleSampleText}
-              iconName="sample"
-              text="Sample text"
-            />
-          </div>
-        )}
         <TextAreaControls
           handleClearInput={handleClearInput}
           handleParaphrase={handleParaphrase}
@@ -88,7 +64,7 @@ export default function InputBlock() {
           loading={loading}
         />
       </div>
-      <ErrorString error={error}/>
+      <ErrorString error={error} />
     </>
   );
 }

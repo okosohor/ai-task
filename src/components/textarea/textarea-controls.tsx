@@ -1,14 +1,20 @@
-import CustomButton from '../custom-button';
+import CustomButton from '../shared/custom-button';
 
 interface Props {
-  inputValue: string,
-  loading: boolean,
-  handleClearInput: () => void,
-  handleParaphrase: () => void,
-  success: boolean
+  inputValue: string;
+  loading: boolean;
+  handleClearInput: () => void;
+  handleParaphrase: () => void;
+  success: boolean;
 }
 
-export default function TextAreaControls({inputValue, loading, handleClearInput, handleParaphrase, success}:Props) {
+export default function TextAreaControls({
+  inputValue,
+  loading,
+  handleClearInput,
+  handleParaphrase,
+  success,
+}: Props) {
   return (
     <div
       className={

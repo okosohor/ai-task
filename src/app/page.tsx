@@ -1,4 +1,4 @@
-import Info from '@/components/info';
+import Info from '@/components/shared/info';
 import fetchContentFromCMS from '@/services/cms';
 import InputBlock from '@/widgets/input-block';
 
