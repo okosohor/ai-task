@@ -7,12 +7,11 @@ const geistInter = Inter({
   display: 'swap',
 });
 
-
 export const metadata: Metadata = {
   title: 'AI Text Paraphraser by JustDone',
-  description: 'Transform your writing from good to great with our Paraphraser tool.',
+  description:
+    'Transform your writing from good to great with our Paraphraser tool.',
 };
-
 
 export default function RootLayout({
   children,
@@ -20,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         className={` ${geistInter.className} antialiased px-[164px] min-h-screen py-8 flex justify-center items-center mx-auto`}
       >

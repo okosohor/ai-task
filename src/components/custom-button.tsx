@@ -5,19 +5,29 @@ import Image from 'next/image';
 interface Props {
   text: string;
   disabled?: boolean;
-  type: 'primary' | 'secondary'
+  type: 'primary' | 'secondary';
   iconName?: Icons;
-  handleClick: () => void
+  handleClick: () => void;
 }
 
-export default function CustomButton({ text, disabled = false, type, iconName, handleClick }: Props) {
+export default function CustomButton({
+  text,
+  disabled = false,
+  type,
+  iconName,
+  handleClick,
+}: Props) {
   return (
-    <Button 
+    <Button
       onClick={handleClick}
       disabled={disabled}
       variant="contained"
       style={{
-        backgroundColor: disabled ? '#AEAFB1' : (type === 'primary' ? '#3B5AAE' : '#EEF0F5'),
+        backgroundColor: disabled
+          ? '#AEAFB1'
+          : type === 'primary'
+            ? '#3B5AAE'
+            : '#EEF0F5',
         color: type === 'primary' ? '#FFF' : '#254699',
         fontWeight: 600,
         padding: '14px 16px',
@@ -31,15 +41,14 @@ export default function CustomButton({ text, disabled = false, type, iconName, h
         maxHeight: '48px',
       }}
     >
-      {
-        iconName &&
-        <Image 
+      {iconName && (
+        <Image
           src={`/images/${iconName}.svg`}
           width={24}
           height={24}
           alt={iconName}
         />
-      }
+      )}
 
       {text}
     </Button>

@@ -3,13 +3,12 @@ import { Button } from '@mui/material';
 import Image from 'next/image';
 
 interface Props {
-  text: string
+  text: string;
   iconName: Icons;
   handleClick: () => void;
 }
 
-
-export default function TextAreaButton ({ text, iconName, handleClick }: Props) {
+export default function TextAreaButton({ text, iconName, handleClick }: Props) {
   return (
     <Button
       onClick={handleClick}

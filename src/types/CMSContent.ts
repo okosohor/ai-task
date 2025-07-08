@@ -1,4 +1,4 @@
 export interface CMSContent {
-  title: string,
-  subtitle: string,
+  title: string;
+  subtitle: string;
 }

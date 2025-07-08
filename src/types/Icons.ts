@@ -1,4 +1,1 @@
-export type Icons = 
-'cross' | 
-'sample' | 
-'paste'
+export type Icons = 'cross' | 'sample' | 'paste';
